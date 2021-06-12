@@ -1,0 +1,31 @@
+.box{
+    grid-column-start:auto;
+    grid-column-end: auto;
+    grid-row-start: auto;
+    grid-row-end: auto;
+
+    background:white;
+}
+.Main{
+    display:grid;
+    grid-template-columns: 40px 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px 40px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: orangered;
+    width: 160px;
+}
+
+.drawn{
+    background:black;
+}
+
+button#reset{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    margin-top: 100px;
+}
