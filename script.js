@@ -1,14 +1,37 @@
 const mainDiv = document.querySelector(".Main");
 const button = document.querySelector("#reset");
+const resButtons = document.querySelectorAll("#resolution");
+
 let divList = [];
 
-for (let x = 0; x < 16; x++){
-    divList[x] = document.createElement('div');
-    divList[x].classList.add("box");
+
+resButtons.forEach(button => button.addEventListener('click', setResolution));
+
+
+function setResolution(e){
+let res = e.target.classList.item(0);
+let squareRes = res*res;
+let boxDimensions = res/400;
+
+
+    for (let x = 0; x < squareRes; x++){
+        divList[x] = document.createElement('div');
+        divList[x].classList.add("box");
+	    console.log(divList[x]);
+    }
+
+    
+	mainDiv.style.grid-template-columns = `${boxDimensions} ${boxDimensions} ${boxDimensions} ${boxDimensions}`;
+	mainDiv.style.grid-template-rows = `${boxDimensions} ${boxDimensions} ${boxDimensions} ${boxDimensions}`;
+
+	appendDivs();
+
 }
 
-divList.forEach(div => mainDiv.appendChild(div));
-divList.forEach(div => div.addEventListener('mouseover', draw));
+function appendDivs(){
+	divList.forEach(div => mainDiv.appendChild(div));
+	divList.forEach(div => div.addEventListener('mouseover', draw));
+}
 
 function draw(e){
     e.target.classList.add("drawn");
@@ -23,7 +46,6 @@ function reset(e){
 
 
 /*TODO
-    increase size to 400x400px
     
     allow different grid sizes
 

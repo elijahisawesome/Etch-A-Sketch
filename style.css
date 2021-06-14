@@ -8,15 +8,18 @@
 }
 .Main{
     display:grid;
-    grid-template-columns: 40px 40px 40px 40px;
-    grid-template-rows: 40px 40px 40px 40px;
+    /*grid-template-columns: 40px 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px 40px;*/
     align-self: center;
     margin-left: auto;
     margin-right: auto;
     border-style: solid;
     border-color: orangered;
-    width: 160px;
+    width: 400px;
+    height: 400px;
 }
+
+
 
 .drawn{
     background:black;
@@ -28,4 +31,10 @@ button#reset{
     margin-right:auto;
     text-align: center;
     margin-top: 100px;
+}
+
+body{
+    background: steelblue;
+    
+    
 }
