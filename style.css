@@ -6,10 +6,19 @@
 
     background:white;
 }
+.start{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50%;
+    text-align: center;
+    top: 60%;
+    left: 50%;
+}
 .Main{
     display:grid;
-    /*grid-template-columns: 40px 40px 40px 40px;
-    grid-template-rows: 40px 40px 40px 40px;*/
     align-self: center;
     margin-left: auto;
     margin-right: auto;
@@ -19,11 +28,14 @@
     height: 400px;
 }
 
-
-
 .drawn{
-    background:black;
+    display: grid;
 }
+
+.pixel{
+    background: white;
+}
+
 
 button#reset{
     display: block;
@@ -37,4 +49,11 @@ body{
     background: steelblue;
     
     
+}
+
+.options{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
 }
