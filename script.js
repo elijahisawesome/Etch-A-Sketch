@@ -19,7 +19,6 @@ function initialSet(){
     if(powerToggle()){
         offScreen.style.visibility = "hidden";
         mainDiv.style.visibility = "visible";
-        slider.style.visibility = "visible";
 
         let res = 25;
         let squareRes = res*res;
@@ -37,7 +36,6 @@ function initialSet(){
     else{
         offScreen.style.visibility = "visible";
         mainDiv.style.visibility = "hidden";
-        slider.style.visibility = "hidden";
         clearDivs();
     }
 }

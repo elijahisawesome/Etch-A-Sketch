@@ -45,23 +45,22 @@
     background: white;
 }
 
-.start{
+.bottomButtons#start{
     left: 75%;
 }
 
 button#reset{
-    top: 70%;
     left: 25%;
 }
 .bottomButtons{
     position: absolute;
-    width: 75px;
-    height: 75px;
-    margin-top: -25px;
-    margin-left: -25px;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -45px;
     border-radius: 50%;
     text-align: center;
-    top: 70%;
+    top: 65%;
     box-shadow: 5px 5px 5px;
 }
 
@@ -79,11 +78,10 @@ body{
 
 .optionsSlider{
     position: absolute;
-    margin-left: -100px;
-    width: 200px; 
-    top: 70%;
+    margin-left: -150px;
+    width: 300px; 
+    top: 65%;
     left: 50%;
-    visibility: hidden;
 }
 
 .sketchPad{
