@@ -1,8 +1,10 @@
 const mainDiv = document.querySelector(".Main");
 const startButton = document.querySelector(".start");
 const button = document.querySelector("#reset");
-const resButtons = document.querySelectorAll("#resolution");
 const colorButtons = document.querySelectorAll("#color");
+const slider = document.querySelector('.optionsSlider');
+const offScreen = document.querySelector('.falseMain');
+const textBoxes = document.querySelectorAll('.text');
 let divList = [];
 let colors = ["#000000", "#ff5733", "#fcff33", "#74ff33", "#33ffe0", "#337dff", "#ce33ff", "#ff336b", "#ffffff"];
 let currentColor = "#000000";
@@ -10,35 +12,61 @@ let colorSelector = "Black";
 
 mainDiv.style.visibility = "hidden";
 
-//intially set divs in drawing board.
+//intially set divs in drawing board. Checks to see if screen is powered on. Turns on power if false, turns off if true.
 startButton.addEventListener("click", initialSet);
 function initialSet(){
-    mainDiv.style.visibility = "visible";
-    startButton.style.visibility = "hidden";
+    //turn on screen, set resolution
+    if(powerToggle()){
+        offScreen.style.visibility = "hidden";
+        mainDiv.style.visibility = "visible";
+        slider.style.visibility = "visible";
 
-    let res = 10;
-    let squareRes = res*res;
-    let boxDimensions = 400/res;
-        for (let x = 0; x < squareRes; x++){
-            divList[x] = document.createElement('div');
-            divList[x].classList.add("box");
-        }
-        mainDiv.style.gridTemplateColumns = `repeat(auto-fill, ${boxDimensions}px)`;
-        mainDiv.style.gridTemplateRows = `repeat(auto-fill, ${boxDimensions}px)`;
-    appendDivs();
+        let res = 25;
+        let squareRes = res*res;
+        let boxDimensions = 400/res;
+            for (let x = 0; x < squareRes; x++){
+                divList[x] = document.createElement('div');
+                divList[x].classList.add("box");
+            }
+            mainDiv.style.gridTemplateColumns = `repeat(auto-fill, ${boxDimensions}px)`;
+            mainDiv.style.gridTemplateRows = `repeat(auto-fill, ${boxDimensions}px)`;
+        appendDivs();
     reset();
+    }
+    //turn off screen.
+    else{
+        offScreen.style.visibility = "visible";
+        mainDiv.style.visibility = "hidden";
+        slider.style.visibility = "hidden";
+        clearDivs();
+    }
 }
 
-resButtons.forEach(button => button.addEventListener('click', setResolution));
+function powerToggle(){
+    let powerOn = true;
+    if (offScreen.style.visibility == "hidden"){
+        powerOn = false;
+    }
+    return powerOn;
+}
+
+//update resolution if slider is at a 25% interval.
+slider.oninput = function(){
+    if(this.value %25 ==0){
+    setResolution(this);
+    }
+}
+
+
 function setResolution(e){
     clearDivs();
-    let res = e.target.classList.item(0);
+    let res = e.value;
+        res = Math.ceil(res/25)*25;
     let squareRes = res*res;
     let boxDimensions = 400/res;
         for (let x = 0; x < squareRes; x++){
             divList[x] = document.createElement('div');
             divList[x].classList.add("box");
-            console.log(divList[x]);
         }
         mainDiv.style.gridTemplateColumns = `repeat(auto-fill, ${boxDimensions}px)`;
         mainDiv.style.gridTemplateRows = `repeat(auto-fill, ${boxDimensions}px)`;
@@ -46,13 +74,13 @@ function setResolution(e){
     reset();
 }
 
-
+//sets current color global var using target's inner text
 colorButtons.forEach(color => color.addEventListener('click', setColor))
 function setColor(e){
     colorSelector = e.target.innerText;
 }
 
-
+//color logic tree, uses global var set in setColor
 function getColor(e){
     if (colorSelector == "Rainbow"){
         color = Math.floor(Math.random() * 7);
@@ -60,6 +88,7 @@ function getColor(e){
     else if(colorSelector == "Black"){
         color = 0;
     }
+    //split text to grab r from rgb. modifies value and applies it to entire rgb field
     else if(colorSelector == "GreyScale"){
         let newColor = e.target.style.background;
         splitColors = newColor.split(",", 2)
@@ -67,8 +96,6 @@ function getColor(e){
         let curVal = splitColors[0];
         curVal -= 16;
 
-        console.log(curVal);
-        console.log(typeof(curVal));
         return `rgba(${curVal}, ${curVal}, ${curVal}, 1)`;
     }
     else if(colorSelector == "Erase"){
@@ -76,6 +103,7 @@ function getColor(e){
     }
     return colors[color];
 }
+
 
 function clearDivs(){
     divList.forEach(div => mainDiv.removeChild(div));
@@ -94,7 +122,7 @@ function draw(e){
         e.target.style.background = `${currentColor}`;
         e.target.classList.add("drawn");
     }
-    //Logic for greyscale drawing.
+    //Logic for greyscale drawing. does not set drawn status
     else if(!e.target.classList.contains("drawn") && colorSelector == "GreyScale"){
         currentColor = getColor(e);
         e.target.style.background = `${currentColor}`;
@@ -114,8 +142,7 @@ function reset(e){
 }
 
 
-/*TODO
-       Allow user-inputtable grid size. Perhaps with a sliding scale.
 
-       Make it pretty
+/*TODO
+    read up on and apply media queries to text boxes. disable them when screen size is too small.
 */

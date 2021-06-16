@@ -3,12 +3,13 @@
     <title>Etch-A-Sketch!</title>
 <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
+<div class = "sketchPad">
     <div class="options">
-        <button id="resolution" class="20">20x20</button>
-        <button id="resolution" class="10">10x10</button>
         <button id="color">Rainbow</button>
         <button id ="color">Black</button>
         <button id ="color">GreyScale</button>
@@ -16,14 +17,27 @@
     </div>
 
     <div>
-        <button class = "start">START</button>
+        <button class = "bottomButtons start" id="start">POWER</button>
+        <button class = "bottomButtons" id="reset">Reset</button>
     </div>
-    
+    <div class = "text" id="left">
+            Etchin-Sketchin
+    </div>
+    <div class = "text" id="right">
+            Etchin-Sketchin
+    </div>
     <div class="Main">
 
     </div>
+
+    <div class="falseMain"></div>
+
+    </div>
+    <div>
+        <input type="range" min="5" max="100" class="optionsSlider">
+    </div>
+</div>
 </body>
-<button id="reset">Reset</button>
 <script src="script.js"></script>
 
 </html>

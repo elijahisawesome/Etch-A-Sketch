@@ -6,26 +6,35 @@
 
     background:white;
 }
-.start{
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    margin-top: -25px;
-    margin-left: -25px;
-    border-radius: 50%;
-    text-align: center;
-    top: 60%;
-    left: 50%;
-}
+
 .Main{
     display:grid;
-    align-self: center;
-    margin-left: auto;
+    position: absolute;
+    margin-left: -200px;
     margin-right: auto;
     border-style: solid;
     border-color: orangered;
     width: 400px;
     height: 400px;
+    box-shadow: 2px 2px 2px;
+    left: 50%;
+}
+
+.falseMain{
+    position: absolute;
+    margin-left: -200px;
+    margin-right: auto;
+    border-style: solid;
+    border-color: orangered;
+    background: lightGrey;
+    width: 400px;
+    height: 400px;
+    box-shadow: 2px 2px 2px;
+    left: 50%;
+}
+#color{
+    background: gold;
+    color: black;
 }
 
 .drawn{
@@ -36,24 +45,71 @@
     background: white;
 }
 
+.start{
+    left: 75%;
+}
 
 button#reset{
-    display: block;
-    margin-left:auto;
-    margin-right:auto;
+    top: 70%;
+    left: 25%;
+}
+.bottomButtons{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50%;
     text-align: center;
-    margin-top: 100px;
+    top: 70%;
+    box-shadow: 5px 5px 5px;
 }
 
 body{
     background: steelblue;
-    
-    
 }
 
 .options{
     display: block;
     margin-left:auto;
     margin-right:auto;
+    height: 50px;
     text-align: center;
+}
+
+.optionsSlider{
+    position: absolute;
+    margin-left: -100px;
+    width: 200px; 
+    top: 70%;
+    left: 50%;
+    visibility: hidden;
+}
+
+.sketchPad{
+    background: #e34424;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: #c73c20;
+    box-shadow: 0px 0px 5px 3px;
+    height: 600px;
+    margin-bottom: -400px;
+}
+.text{
+    font-family: 'Leckerli One', cursive;
+    position: absolute;
+    font-size: 6vw;
+    color:gold;
+    height:200;
+    width:110;
+    top:25%;
+}
+.text#left{
+    left:5%;
+}
+.text#right{
+    left:75%;
 }
