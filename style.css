@@ -50,17 +50,17 @@
 }
 
 button#reset{
-    left: 25%;
+    left: 20%;
 }
 .bottomButtons{
-    position: absolute;
+    position: relative;
     width: 90px;
     height: 90px;
     margin-top: -45px;
     margin-left: -45px;
     border-radius: 50%;
     text-align: center;
-    top: 65%;
+    top: 500px;
     box-shadow: 5px 5px 5px;
 }
 
@@ -77,10 +77,10 @@ body{
 }
 
 .optionsSlider{
-    position: absolute;
+    position: relative;
     margin-left: -150px;
     width: 300px; 
-    top: 65%;
+    top: 450px;
     left: 50%;
 }
 
